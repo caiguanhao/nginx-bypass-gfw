@@ -38,3 +38,10 @@ Cons
 
 * Not every website works.
 * Only for browsers. Not for apps. Because you are using your own domain name.
+
+Usage
+-----
+
+* Edit configs in `install.sh`.
+* Run `./install.sh`.
+* Copy config files in the `generated` directory to your nginx directory.
