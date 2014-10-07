@@ -9,6 +9,9 @@ TWITTER_HOST=mytwitter.example.com
 TWITTER_SSL_CRT=/etc/nginx/certs/tw.crt
 TWITTER_SSL_KEY=/etc/nginx/certs/tw.key
 
+BLOGGER_HOST=myblogger.example.com
+BLOGGER=googleblog.blogspot.com
+
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GEN=$SCRIPTDIR/generated
 
@@ -25,3 +28,8 @@ sed \
   -e "s#{{SSL_CRT}}#$TWITTER_SSL_CRT#g" \
   -e "s#{{SSL_KEY}}#$TWITTER_SSL_KEY#g" \
   $SCRIPTDIR/twitter.conf > $GEN/twitter.conf
+
+sed \
+  -e "s#{{HOST}}#$BLOGGER_HOST#g" \
+  -e "s#{{BLOGGER}}#$BLOGGER#g" \
+  $SCRIPTDIR/blogger.conf > $GEN/blogger.conf
