@@ -12,6 +12,10 @@ TWITTER_SSL_KEY=/etc/nginx/certs/tw.key
 BLOGGER_HOST=myblogger.example.com
 BLOGGER=googleblog.blogspot.com
 
+APPLEDAILYHK_HOST=myappledaily.example.com
+APPLEDAILYHK_CRT=/etc/nginx/certs/ad.crt
+APPLEDAILYHK_KEY=/etc/nginx/certs/ad.key
+
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GEN=$SCRIPTDIR/generated
 
@@ -33,3 +37,9 @@ sed \
   -e "s#{{HOST}}#$BLOGGER_HOST#g" \
   -e "s#{{BLOGGER}}#$BLOGGER#g" \
   $SCRIPTDIR/blogger.conf > $GEN/blogger.conf
+
+sed \
+  -e "s#{{HOST}}#$APPLEDAILYHK_HOST#g" \
+  -e "s#{{SSL_CRT}}#$APPLEDAILYHK_CRT#g" \
+  -e "s#{{SSL_KEY}}#$APPLEDAILYHK_KEY#g" \
+  $SCRIPTDIR/appledailyhk.conf > $GEN/appledailyhk.conf
