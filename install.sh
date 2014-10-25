@@ -16,6 +16,10 @@ APPLEDAILYHK_HOST=myappledaily.example.com
 APPLEDAILYHK_CRT=/etc/nginx/certs/ad.crt
 APPLEDAILYHK_KEY=/etc/nginx/certs/ad.key
 
+T66Y_HOST=myty.example.com
+T66Y_CRT=/etc/nginx/certs/ty.crt
+T66Y_KEY=/etc/nginx/certs/ty.key
+
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GEN=$SCRIPTDIR/generated
 
@@ -43,3 +47,9 @@ sed \
   -e "s#{{SSL_CRT}}#$APPLEDAILYHK_CRT#g" \
   -e "s#{{SSL_KEY}}#$APPLEDAILYHK_KEY#g" \
   $SCRIPTDIR/appledailyhk.conf > $GEN/appledailyhk.conf
+
+sed \
+  -e "s#{{HOST}}#$T66Y_HOST#g" \
+  -e "s#{{SSL_CRT}}#$T66Y_CRT#g" \
+  -e "s#{{SSL_KEY}}#$T66Y_KEY#g" \
+  $SCRIPTDIR/t66y.conf > $GEN/t66y.conf
