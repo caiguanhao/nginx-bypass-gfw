@@ -20,6 +20,12 @@ T66Y_HOST=myty.example.com
 T66Y_CRT=/etc/nginx/certs/ty.crt
 T66Y_KEY=/etc/nginx/certs/ty.key
 
+FACEBOOK_HOST=f.example.com
+FACEBOOK_CRT=/etc/nginx/certs/fb.crt
+FACEBOOK_KEY=/etc/nginx/certs/fb.key
+FACEBOOK_AUTH_FILE=/home/example/facebook.passwd
+FACEBOOK_COOKIE="copy-from-chrome"
+
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GEN=$SCRIPTDIR/generated
 
@@ -53,3 +59,11 @@ sed \
   -e "s#{{SSL_CRT}}#$T66Y_CRT#g" \
   -e "s#{{SSL_KEY}}#$T66Y_KEY#g" \
   $SCRIPTDIR/t66y.conf > $GEN/t66y.conf
+
+sed \
+  -e "s#{{HOST}}#$FACEBOOK_HOST#g" \
+  -e "s#{{SSL_CRT}}#$FACEBOOK_CRT#g" \
+  -e "s#{{SSL_KEY}}#$FACEBOOK_KEY#g" \
+  -e "s#{{AUTH_FILE}}#$FACEBOOK_AUTH_FILE#g" \
+  -e "s#{{COOKIE}}#$FACEBOOK_COOKIE#g" \
+  $SCRIPTDIR/facebook.conf > $GEN/facebook.conf
