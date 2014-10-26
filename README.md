@@ -45,3 +45,10 @@ Usage
 * Edit configs in `install.sh`.
 * Run `./install.sh`.
 * Copy config files in the `generated` directory to your nginx directory.
+
+### Facebook
+
+Since it is difficult to fix the log in problem for facebook, I would rather
+copy the Cookie string in your Chrome, after you have successfully logged in
+facebook, to the facebook nginx config file. Therefore, every one can see
+your facebook, so we use auth_basic to secure the site.
